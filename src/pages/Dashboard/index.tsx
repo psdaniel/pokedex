@@ -27,39 +27,32 @@ export default class Dashboard extends Component<IProps, IState> {
 
     this.state = {
       pokemons: [],
-      pokemonsCount: 0,
+      pokemonsCount: 20,
       page: 1
     };
   }
 
-  componentDidMount() {
+  async fetchPokemon() {
     const offset = Number(this.state.page) * 20 - 20;
 
-    api.get(`pokemon?offset=${offset}&limit=20`).then((response) => {
-      this.setState({
-        pokemons: response.data.results,
-        pokemonsCount: response.data.count,
-      });
+    const response = await api.get(`pokemon?offset=${offset}&limit=20`);
+
+    this.setState({
+      pokemons: response.data.results
     });
   }
 
-  handlePagination(event: any, value: any) {
+  async componentDidMount() {
+    await this.fetchPokemon();
+  }
+
+  async handlePagination(event: any, value: any) {
     this.setState({ page: value });
-    const offset = Number(this.state.page) * 20 - 20;
-
-    api.get(`pokemon?offset=${offset}&limit=20`).then((response) => {
-      this.setState({
-        pokemons: response.data.results,
-        pokemonsCount: response.data.count
-      })
-    });
-
-    
+    await this.fetchPokemon();
   }
 
   render() {
-    const page = Number(this.state.page)
-
+    const page = this.state.page;
 
     return (
       <>
@@ -74,11 +67,10 @@ export default class Dashboard extends Component<IProps, IState> {
                 <div>
                   <img
                     alt='monster'
-                    src={`https://pokeres.bastionbot.org/images/pokemon/${20 * (page - 1) + k + 1}` + ".png"}
+                    src={`https://pokeres.bastionbot.org/images/pokemon/${(20 * (Number(this.state.page) - 1)) + k + 1}` + ".png"}
                     width={100}
                   />
-                  <h2>{pokemon.id} {pokemon.name}</h2>
-                  <p>{pokemon.type}</p>
+                  <h2>{this.state.pokemons[k].name}</h2>
                 </div>
               </Card>
             ))}
