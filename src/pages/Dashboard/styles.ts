@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import backgroundImg from '../../assets/backgroundImg.png';
 

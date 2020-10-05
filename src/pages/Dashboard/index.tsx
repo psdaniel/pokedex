@@ -5,7 +5,6 @@ import api from '../../services/api';
 
 import { Container, Header, CardContainer, Card } from './styles';
 
-
 interface IProps {
   id?: string
 }
