@@ -1,9 +1,9 @@
 # Pokedex
 
-### Tecnologias utilizadas:
--React
--Axios
--Material-UI
+### Tecnologias e bibliotecas utilizadas:
+- React
+- Axios
+- Material-UI
 
 ### Descrição da aplicação:
 
