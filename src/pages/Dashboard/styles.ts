@@ -29,7 +29,8 @@ export const Header = styled.div`
     text-align: center;
 
     h1 {
-        
+        text-transform: uppercase;
+        color: #FFDE00;
     }
 `;
 
@@ -37,9 +38,10 @@ export const CardContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
+    width: 55rem;
 
     overflow-y: scroll;
-    max-height: 80vh;
+    max-height: 75vh;
 
     &::-webkit-scrollbar {
         display: none;
@@ -56,8 +58,12 @@ export const Card = styled.div`
     margin-bottom: 1rem;
     opacity: 0.8;
 
+    
+    transition: transform 0.25s ease-out;
+
     &:hover {
         cursor: pointer;
+        transform: scale(1.05);
     }
 
     
