@@ -4,6 +4,7 @@ import api from '../../services/api';
 
 import { Container, Header, CardContainer, Card } from './styles';
 
+
 interface IProps {
     id?: string
 }
@@ -44,10 +45,9 @@ export default class Dashboard extends Component<IProps, IState> {
                         <h1>Pokedex</h1>
                     </Header>
                     <CardContainer>
-                    <div className='card-list'>
                         {this.state.pokemons.map((pokemon, k) => (
                         <Card>
-                            <div className='card-container'>
+                            <div>
                                 <img
                                 alt='monster'
                                 src={`https://pokeres.bastionbot.org/images/pokemon/${20 * (page - 1) + k + 1}`+ ".png"}
@@ -58,7 +58,6 @@ export default class Dashboard extends Component<IProps, IState> {
                             </div>
                         </Card>
                         ))}
-                    </div>
                     </CardContainer>
             </Container>
         </>
